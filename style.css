@@ -1,0 +1,20 @@
+.tabelA {
+  color: green;
+  font-size: 30px;
+  text-align: center;
+}
+.tabelB {
+  color: yellow;
+  font-size: 40px;
+  text-align: left;
+}
+#tabelC {
+  color: red;
+  font-size: 50px;
+  text-align: center;
+}
+#tabelD {
+  color: blue;
+  font-size: 60px;
+  text-align: left;
+}

@@ -1,0 +1,27 @@
+body {
+  background-color: #343a34;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stopWatch {
+  color: #ffc10f;
+  font-size: 200px;
+  font-weight: bold;
+  padding-bottom: -10;
+}
+
+.stopWatch2 {
+  color: #ffc10f;
+  font-size: 40px;
+
+  margin-left: 700px;
+}
+
+.button {
+  margin: 10px;
+}
