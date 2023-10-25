@@ -48,7 +48,7 @@ containueButtonTag.addEventListener("click", () => {
   clearInterval(intervalId);
   intervalId = setInterval(startTime, 1);
 });
-//Test
+
 restartButtonTag.addEventListener("click", () => {
   clearInterval(intervalId);
   (seconds = 0), (minutes = 0), (hours = 0), (milliseconds = 0);
