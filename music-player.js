@@ -22,9 +22,8 @@ const tracks = [
 for (let i = 0; i < tracks.length; i++) {
   const trackTag = document.createElement("div");
   trackTag.addEventListener("click", () => {
-    const trackId = tracks[i].trackId;
-    audioTag.src = trackId;
-    audioTag.play();
+    currentPlayingIndex = i;
+    playSong();
   });
   trackTag.classList.add("trackItem");
   const title = (i + 1).toString() + ". " + tracks[i].title;
@@ -64,11 +63,17 @@ const creatMinuteAndSecondText = (totalSeconds) => {
 let currentPlayingIndex = 0;
 let isPLaying = false;
 playButtonTag.addEventListener("click", () => {
-  const songIdToPlay = tracks[currentPlayingIndex].trackId;
-  audioTag.src = songIdToPlay;
-  audioTag.play();
+  const currentTime = Math.floor(audioTag.currentTime);
   isPLaying = true;
-  updatePlayAndPauseButton();
+  if (currentTime === 0) {
+    playSong();
+  } else {
+    audioTag.play();
+    updatePlayAndPauseButton();
+    pauseButtonTag.style.color = "#22ff00";
+    nextButtonTag.style.color = "#22ff00";
+    previousButtonTag.style.color = "#22ff00";
+  }
 });
 
 pauseButtonTag.addEventListener("click", () => {
@@ -76,6 +81,30 @@ pauseButtonTag.addEventListener("click", () => {
   audioTag.pause();
   updatePlayAndPauseButton();
 });
+
+previousButtonTag.addEventListener("click", () => {
+  if (currentPlayingIndex === 0) {
+    return;
+  }
+  currentPlayingIndex--;
+  playSong();
+});
+
+nextButtonTag.addEventListener("click", () => {
+  if (currentPlayingIndex === tracks.length - 1) {
+    return;
+  }
+  currentPlayingIndex++;
+  playSong();
+});
+
+const playSong = () => {
+  const songIdToPlay = tracks[currentPlayingIndex].trackId;
+  audioTag.src = songIdToPlay;
+  audioTag.play();
+  isPLaying = true;
+  updatePlayAndPauseButton();
+};
 
 const updatePlayAndPauseButton = () => {
   if (isPLaying) {
